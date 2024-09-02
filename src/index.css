@@ -1,0 +1,122 @@
+/* index.css */
+
+/* Planted Palette */
+:root {
+  /* HEX */
+  --nyanza: #e5f9e0;
+  --light-green: #a3f7b5;
+  --mint: #40c9a2;
+  --persian-green: #2f9c95;
+
+  /* Gradients for Planted Palette */
+  --gradient-top-planted: linear-gradient(0deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-right-planted: linear-gradient(90deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-bottom-planted: linear-gradient(180deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-left-planted: linear-gradient(270deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-top-right-planted: linear-gradient(45deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-bottom-right-planted: linear-gradient(135deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-top-left-planted: linear-gradient(225deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-bottom-left-planted: linear-gradient(315deg, #e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+  --gradient-radial-planted: radial-gradient(#e5f9e0, #a3f7b5, #40c9a2, #2f9c95);
+}
+
+/* Marine Palette */
+:root {
+  /* HEX */
+  --charcoal: #2f4858;
+  --lapis-lazuli: #33658a;
+  --carolina-blue: #86bbd8;
+  --hunyadi-yellow: #f6ae2d;
+
+  /* Inverted Gradients for Marine Palette */
+  --gradient-top-marine: linear-gradient(0deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-right-marine: linear-gradient(90deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-bottom-marine: linear-gradient(180deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-left-marine: linear-gradient(270deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-top-right-marine: linear-gradient(45deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-bottom-right-marine: linear-gradient(135deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-top-left-marine: linear-gradient(225deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-bottom-left-marine: linear-gradient(315deg, #f6ae2d, #86bbd8, #33658a, #2f4858);
+  --gradient-radial-marine: radial-gradient(#f6ae2d, #86bbd8, #33658a, #2f4858);
+}
+
+/* Login Palette */
+:root {
+  /* HEX */
+  --old-gold: #bfae48;
+  --kelly-green: #5fad41;
+  --sea-green: #2d936c;
+  --persian-indigo: #391463;
+
+  /* Gradients for Login Palette */
+  --gradient-top-login: linear-gradient(0deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-right-login: linear-gradient(90deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-bottom-login: linear-gradient(180deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-left-login: linear-gradient(270deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-top-right-login: linear-gradient(45deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-bottom-right-login: linear-gradient(135deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-top-left-login: linear-gradient(225deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-bottom-left-login: linear-gradient(315deg, #bfae48, #5fad41, #2d936c, #391463);
+  --gradient-radial-login: radial-gradient(#bfae48, #5fad41, #2d936c, #391463);
+}
+
+/* Example Usage */
+.btn-planted {
+  background-color: var(--persian-green);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-marine {
+  background-color: var(--charcoal);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-login {
+  background-color: var(--persian-indigo);
+  color: #ffffff;
+  border: none;
+}
+
+.container-planted {
+  background-color: var(--nyanza);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.container-marine {
+  background-color: var(--carolina-blue);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.container-login {
+  background-color: var(--sea-green);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.text-planted {
+  color: var(--persian-green);
+}
+
+.text-marine {
+  color: var(--charcoal);
+}
+
+.text-login {
+  color: var(--old-gold);
+}
+
+.gradient-background-planted {
+  background: var(--gradient-right-planted);
+}
+
+.gradient-background-marine {
+  background: var(--gradient-right-marine);
+}
+
+.gradient-background-login {
+  background: var(--gradient-right-login);
+}

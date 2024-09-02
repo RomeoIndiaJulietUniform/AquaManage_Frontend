@@ -1,0 +1,64 @@
+@import '../index.css';
+
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container-login {
+  position: relative;
+  background-color: var(--sea-green);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  z-index: 1;
+}
+
+.card {
+  background-color: var(--charcoal);
+  border: none;
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-body {
+  color: white;
+  padding: 20px;
+  width: 100%;
+}
+
+.card-title {
+  color: var(--carolina-blue);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  margin-top: 20px;
+  background-color: var(--persian-indigo);
+  border-color: var(--persian-indigo);
+}
+
+.btn-primary:hover {
+  background-color: var(--hunyadi-yellow);
+  border-color: var(--hunyadi-yellow);
+}
+
+.btn-link {
+  color: var(--carolina-blue);
+}
+
+.btn-link:hover {
+  color: var(--hunyadi-yellow);
+}
