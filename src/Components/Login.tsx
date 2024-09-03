@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import "../Styles/Login.css"
-import BubbleEffect from './BubbleEffect';
+
 
 
 function Login({ switchToSignup }: { switchToSignup: () => void }) {
@@ -136,7 +136,6 @@ function LoginPage() {
 
   return (
     <div className="App">
-      <BubbleEffect/>
       {isSignup ? (
         <Signup switchToLogin={() => setIsSignup(false)} />
       ) : (
