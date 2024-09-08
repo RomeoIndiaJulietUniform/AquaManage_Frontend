@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
-import "../Styles/Login.css"
+import "../Styles/Login.css";
+import axios from 'axios';
 
-
+const API_BASE_URL = 'http://localhost:8081';
 
 function Login({ switchToSignup }: { switchToSignup: () => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Login with', { email, password });
+    try {
+      const response = await axios.post(`${API_BASE_URL}/signin`, { email, password });
+      console.log('Login successful:', response.data);
+    } catch (err) {
+      setError('Login failed. Please check your credentials.');
+    }
   };
 
   return (
@@ -19,6 +26,7 @@ function Login({ switchToSignup }: { switchToSignup: () => void }) {
           <div className="card">
             <div className="card-body">
               <h2 className="card-title text-center">Login</h2>
+              {error && <p className="text-danger">{error}</p>}
               <form onSubmit={handleLogin}>
                 <div className="form-group">
                   <label htmlFor="login-email">Email:</label>
@@ -57,13 +65,25 @@ function Login({ switchToSignup }: { switchToSignup: () => void }) {
 
 function Signup({ switchToLogin }: { switchToLogin: () => void }) {
   const [name, setName] = useState('');
-  const [username, setUsername] = useState('');
+  const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSignup = (e: React.FormEvent) => {
+  const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Sign Up with', { name, username, email, password });
+    try {
+      const response = await axios.post(`${API_BASE_URL}/users`, { name, userName, email, password });
+      console.log('Signup successful:', response.data);
+      alert('Signup successful!');
+      setName('');
+      setUserName('');
+      setEmail('');
+      setPassword('');
+      switchToLogin();
+    } catch (err) {
+      setError('Signup failed. Please try again.');
+    }
   };
 
   return (
@@ -73,6 +93,7 @@ function Signup({ switchToLogin }: { switchToLogin: () => void }) {
           <div className="card">
             <div className="card-body">
               <h2 className="card-title text-center">Sign Up</h2>
+              {error && <p className="text-danger">{error}</p>}
               <form onSubmit={handleSignup}>
                 <div className="form-group">
                   <label htmlFor="signup-name">Name:</label>
@@ -91,8 +112,8 @@ function Signup({ switchToLogin }: { switchToLogin: () => void }) {
                     type="text"
                     id="signup-username"
                     className="form-control"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
                     required
                   />
                 </div>

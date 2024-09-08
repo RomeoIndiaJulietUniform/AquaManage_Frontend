@@ -4,14 +4,27 @@ info:
   version: 1.0.0
   description: API for managing aquariums
 servers:
-  - url: http://api-url.com/v1
-    description: The base URL for the AquaManage API
+  - url: http://localhost:8081
+    description: Local development server for the AquaManage API
 
 paths:
-  /signup:
+  /users:
+    get:
+      summary: Get all users
+      description: Retrieve a list of all users
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+
     post:
-      summary: User sign-up
-      description: Create a new user account
+      summary: User sign-up (Create a new user)
+      description: Create a new user account by posting the user's data
       requestBody:
         required: true
         content:
@@ -21,7 +34,7 @@ paths:
               properties:
                 name:
                   type: string
-                username:
+                userName:
                   type: string
                 email:
                   type: string
@@ -39,7 +52,7 @@ paths:
                 properties:
                   id:
                     type: integer
-                  username:
+                  userName:
                     type: string
                   email:
                     type: string
@@ -52,36 +65,27 @@ paths:
                 properties:
                   message:
                     type: string
-                    
-  /signin:
-    post:
-      summary: User sign-in
-      description: Authenticate a user and return a token
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                  format: password
+
+  /users/email/{email}:
+    get:
+      summary: Get user by email
+      description: Retrieve user details by email
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
       responses:
         '200':
-          description: Successfully authenticated
+          description: User found
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  token:
-                    type: string
-        '401':
-          description: Unauthorized (e.g., incorrect username or password)
+                $ref: '#/components/schemas/User'
+        '404':
+          description: User not found
           content:
             application/json:
               schema:
@@ -89,3 +93,64 @@ paths:
                 properties:
                   message:
                     type: string
+
+    delete:
+      summary: Delete user by email
+      description: Remove a user from the system by their email
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '204':
+          description: User successfully deleted
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+  /users/{id}:
+    delete:
+      summary: Delete user by ID
+      description: Remove a user from the system by their ID
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: User successfully deleted
+        '404':
+          description: User not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        userName:
+          type: string
+        email:
+          type: string
+          format: email
