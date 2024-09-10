@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import "../Styles/Login.css";
 import axios from 'axios';
 
@@ -8,12 +9,16 @@ function Login({ switchToSignup }: { switchToSignup: () => void }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate(); 
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}/signin`, { email, password });
+      const response = await axios.post(`${API_BASE_URL}/auth/login`, { email, password });
+      const { token } = response.data;
+      localStorage.setItem('jwtToken', token); 
       console.log('Login successful:', response.data);
+      navigate('/home'); 
     } catch (err) {
       setError('Login failed. Please check your credentials.');
     }
