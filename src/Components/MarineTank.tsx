@@ -1,12 +1,14 @@
-import React from 'react';
 import '../Styles/MarineTank.css'; 
 
 function MarineTank() {
   return (
     <div className="marine-tank-container">
 
+      <h1>Marine Tank</h1>
+
+     <div className='marine-display'>
       <div className="marine-tank-gif">
-        <img src="/path-to-your-marine-tank-gif.gif" alt="Marine Tank" />
+        <img src="src/Assets/marine.jpg" alt="Marine Tank" />
       </div>
 
  
@@ -17,6 +19,7 @@ function MarineTank() {
           </div>
         ))}
       </div>
+    </div> 
 
       <div className="sliders-container">
         {[...Array(8)].map((_, index) => (

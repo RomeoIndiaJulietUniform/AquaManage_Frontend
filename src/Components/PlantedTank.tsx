@@ -1,12 +1,15 @@
-import React from 'react';
 import '../Styles/PlantedTank.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function PlantedTank() {
   return (
     <div className="planted-tank-container">
+ 
+     <h1>Planted Tank</h1>
+
+      <div className='planted-display'>
       <div className="planted-tank-gif">
-        <img src="/path-to-your-planted-tank-gif.gif" alt="Planted Tank" />
+        <img src="src/Assets/planted.jpg" alt="Planted Tank" />
       </div>
 
       <div className="dials-container">
@@ -16,6 +19,7 @@ function PlantedTank() {
           </div>
         ))}
       </div>
+      </div> 
 
       <div className="sliders-container">
         {[...Array(8)].map((_, index) => (

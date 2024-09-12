@@ -1,101 +1,110 @@
-/* MarineTank.css */
-
 :root {
-    --charcoal: #2f4858;
-    --lapis-lazuli: #33658a;
-    --carolina-blue: #86bbd8;
-    --hunyadi-yellow: #f6ae2d;
+  --charcoal: #2f4858;
+  --lapis-lazuli: #33658a;
+  --carolina-blue: #86bbd8;
+  --hunyadi-yellow: #f6ae2d;
+  --persian-green: #1a1d1d;
+  --green: #2f9c95;
   
-    --gradient-radial-marine: radial-gradient(#f6ae2d, #86bbd8, #33658a, #2f4858);
-  }
-  
-  .marine-tank-container {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
-    background: var(--gradient-radial-marine);
-    color: var(--carolina-blue);
-  }
-  
-  .marine-tank-gif img {
-    max-width: 100%;
-    border-radius: 15px;
-  }
-  
-  .dials-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .dial {
-    width: 120px;
-    height: 120px;
-    border: 5px solid var(--charcoal);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--carolina-blue);
-    color: var(--hunyadi-yellow);
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
-  .sliders-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .slider-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .slider-label {
-    font-size: 14px;
-    color: var(--carolina-blue);
-  }
-  
-  .slider {
-    -webkit-appearance: none;
-    width: 200px;
-    height: 8px;
-    background: var(--lapis-lazuli);
-    border-radius: 5px;
-    outline: none;
-    opacity: 0.7;
-    transition: opacity .2s;
-  }
-  
-  .slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: var(--hunyadi-yellow);
-    cursor: pointer;
-  }
-  
-  .slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: var(--hunyadi-yellow);
-    cursor: pointer;
-  }
-  
-  .slider:hover {
-    opacity: 1;
-  }
-  
+  --gradient-radial-marine: radial-gradient(#f6ae2d, #86bbd8, #33658a, #2f4858);
+}
+
+.marine-tank-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: var(--gradient-radial-marine);
+  color: var(--carolina-blue);
+}
+
+.marine-display {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%; 
+}
+
+.marine-tank-gif img {
+  width: 700px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 20px; 
+}
+
+.dials-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+}
+
+.dial {
+  width: 140px;
+  height: 140px;
+  border: 5px solid var(--charcoal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--carolina-blue);
+  color: var(--hunyadi-yellow);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.sliders-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 100px 30px;
+  justify-items: center;
+}
+
+
+.slider-container {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  gap: 10px;
+}
+
+.slider-label {
+  font-size: 40px;
+  color: var(--persian-green);
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 300px;
+  height: 10px;
+  background: var(--green);
+  border-radius: 5px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--hunyadi-yellow);
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--hunyadi-yellow);
+  cursor: pointer;
+}
+
+.slider:hover {
+  opacity: 1;
+}
