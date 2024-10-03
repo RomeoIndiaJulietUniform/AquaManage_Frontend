@@ -2,155 +2,272 @@ openapi: 3.0.0
 info:
   title: AquaManage API
   version: 1.0.0
-  description: API for managing aquariums
+  description: API for managing aquarium actuators (Marine and Planted Tanks)
 servers:
   - url: http://localhost:8081
     description: Local development server for the AquaManage API
 
 paths:
-  /users:
+  /actuators/Marine/greet:
     get:
-      summary: Get all users
-      description: Retrieve a list of all users
+      summary: Greeting from Marine Actuator
+      description: Returns a greeting message from the Marine Actuator
       responses:
         '200':
-          description: List of users
+          description: Greeting message
           content:
-            application/json:
+            text/plain:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
+                type: string
 
+  /actuators/Marine/set-saltwater-ratio:
     post:
-      summary: User sign-up (Create a new user)
-      description: Create a new user account by posting the user's data
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                userName:
-                  type: string
-                email:
-                  type: string
-                  format: email
-                password:
-                  type: string
-                  format: password
-      responses:
-        '201':
-          description: User successfully created
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                  userName:
-                    type: string
-                  email:
-                    type: string
-        '400':
-          description: Bad request (e.g., missing or invalid fields)
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
-
-  /users/email/{email}:
-    get:
-      summary: Get user by email
-      description: Retrieve user details by email
+      summary: Set saltwater mixer ratio for marine tank
+      description: Set the saltwater mixer ratio for the marine tank
       parameters:
-        - name: email
-          in: path
+        - name: ratio
+          in: query
           required: true
           schema:
-            type: string
-            format: email
+            type: number
       responses:
         '200':
-          description: User found
+          description: Saltwater mixer ratio successfully set
           content:
-            application/json:
+            text/plain:
               schema:
-                $ref: '#/components/schemas/User'
-        '404':
-          description: User not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                type: string
 
-    delete:
-      summary: Delete user by email
-      description: Remove a user from the system by their email
+  /actuators/Marine/set-calcium-rate:
+    post:
+      summary: Set calcium dosing rate for marine tank
+      description: Set the calcium dosing rate for the marine tank in mL/hour
       parameters:
-        - name: email
-          in: path
+        - name: rate
+          in: query
           required: true
           schema:
-            type: string
-            format: email
+            type: number
       responses:
-        '204':
-          description: User successfully deleted
-        '404':
-          description: User not found
+        '200':
+          description: Calcium dosing rate successfully set
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                type: string
 
-  /users/{id}:
-    delete:
-      summary: Delete user by ID
-      description: Remove a user from the system by their ID
+  /actuators/Marine/set-alkalinity-rate:
+    post:
+      summary: Set alkalinity dosing rate for marine tank
+      description: Set the alkalinity dosing rate for the marine tank in mL/hour
       parameters:
-        - name: id
-          in: path
+        - name: rate
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Alkalinity dosing rate successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Marine/set-skimmer-efficiency:
+    post:
+      summary: Set skimmer efficiency for marine tank
+      description: Set the skimmer efficiency for the marine tank in percentage
+      parameters:
+        - name: efficiency
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Skimmer efficiency successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Marine/set-heater-temp:
+    post:
+      summary: Set heater temperature for marine tank
+      description: Set the heater temperature for the marine tank in Celsius
+      parameters:
+        - name: temperature
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Heater temperature successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Marine/set-light-duration:
+    post:
+      summary: Set light time duration for marine tank
+      description: Set the light duration for the marine tank in minutes
+      parameters:
+        - name: duration
+          in: query
           required: true
           schema:
             type: integer
       responses:
-        '204':
-          description: User successfully deleted
-        '404':
-          description: User not found
+        '200':
+          description: Light time duration successfully set
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+                type: string
 
-components:
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        userName:
-          type: string
-        email:
-          type: string
-          format: email
+  /actuators/Marine/set-water-pump-rate:
+    post:
+      summary: Set water pump flow rate for marine tank
+      description: Set the water pump flow rate for the marine tank in L/h
+      parameters:
+        - name: flowRate
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Water pump flow rate successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Marine/set-auto-water-change:
+    post:
+      summary: Set auto water change volume for marine tank
+      description: Set the auto water change volume for the marine tank in liters
+      parameters:
+        - name: volume
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Auto water change volume successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Planted/set-co2-rate:
+    post:
+      summary: Set CO2 injection rate for planted tank
+      description: Set the CO2 injection rate for the planted tank in bubbles/minute
+      parameters:
+        - name: rate
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: CO2 injection rate successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Planted/set-nutrient-rate:
+    post:
+      summary: Set nutrient dosing rate for planted tank
+      description: Set the nutrient dosing rate for the planted tank in mL/hour
+      parameters:
+        - name: rate
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Nutrient dosing rate successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Planted/set-heater-temp:
+    post:
+      summary: Set heater temperature for planted tank
+      description: Set the heater temperature for the planted tank in Celsius
+      parameters:
+        - name: temperature
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Heater temperature successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Planted/set-light-duration:
+    post:
+      summary: Set light time duration for planted tank
+      description: Set the light duration for the planted tank in minutes
+      parameters:
+        - name: duration
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Light time duration successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Planted/set-water-pump-rate:
+    post:
+      summary: Set water pump flow rate for planted tank
+      description: Set the water pump flow rate for the planted tank in L/h
+      parameters:
+        - name: flowRate
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Water pump flow rate successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /actuators/Planted/set-auto-water-change:
+    post:
+      summary: Set auto water change volume for planted tank
+      description: Set the auto water change volume for the planted tank in liters
+      parameters:
+        - name: volume
+          in: query
+          required: true
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Auto water change volume successfully set
+          content:
+            text/plain:
+              schema:
+                type: string
