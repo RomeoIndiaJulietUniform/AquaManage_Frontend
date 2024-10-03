@@ -43,14 +43,24 @@
   justify-content: center;
 }
 
+.circular-progress-container {
+  width: 150px; 
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .dial {
   width: 140px;
   height: 140px;
-  border: 5px solid var(--charcoal);
+  border: none; 
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   background: var(--carolina-blue);
   color: var(--hunyadi-yellow);
   font-size: 14px;
@@ -63,7 +73,6 @@
   gap: 100px 30px;
   justify-items: center;
 }
-
 
 .slider-container {
   display: flex;
